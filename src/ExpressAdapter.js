@@ -49,8 +49,9 @@ export default class ExpressAdapter extends EventEmitter {
    *
    * @param {Object} requestListener Request listener (typically an express/connect instance)
    */
-  addRequestListener(requestListener) {
-    this.addListener("request", requestListener);
+  async addRequestListener(requestListener) {
+    let app = await requestListener()
+    this.addListener("request", app);
   }
 
   /**
