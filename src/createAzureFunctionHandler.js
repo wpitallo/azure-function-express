@@ -7,7 +7,6 @@ import ExpressAdapter from "./ExpressAdapter";
  * @returns {function(context: Object)} Azure Function handle
  */
 export default async function createAzureFunctionHandler(requestListener) {
-  let app = await requestListener
-  const adapter = new ExpressAdapter(app);
+  const adapter = new ExpressAdapter(requestListener);
   return adapter.createAzureFunctionHandler();
 }
